@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prospere - Oferta e Produtos</title>
+    <meta name="description" content="Conheça a oferta dos e-books do Prospere e escolha o melhor caminho para a sua jornada.">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Prospere - Oferta e Produtos">
+    <meta property="og:description" content="Conheça a oferta dos e-books do Prospere e escolha o melhor caminho para a sua jornada.">
+    <meta property="og:image" content="assets/imagens/placeholder-og.jpg">
+    <!-- Google Fonts: Playfair Display e Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="logo-texto">Prospere</span>
+            <a href="index.html" style="color: var(--cor-dourado); text-decoration: none; font-size: 0.95rem; font-weight: 500;">← Voltar ao início</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Banner de Perfil Salvo (Dinamico) -->
+        <div id="perfil-banner" class="container" style="display: none; text-align: center; padding: 30px 0; border-bottom: 1px solid rgba(212, 175, 55, 0.2); margin-bottom: 40px;">
+            <p style="color: var(--cor-dourado); font-size: 1.1rem; font-weight: 600;" id="perfil-texto-destaque">Seu perfil: Carregando...</p>
+        </div>
+
+        <!-- Vídeo de Fechamento -->
+        <section class="container" style="text-align: center; padding-top: 20px; padding-bottom: 40px;">
+            <h1 id="titulo-oferta-principal" style="font-size: 2.2rem; margin-bottom: 20px;">Escolha o Seu Caminho para a Prosperidade</h1>
+            <p style="color: var(--cor-texto-muted); max-width: 700px; margin: 0 auto 30px auto;">
+                Conheça os materiais desenvolvidos para apoiar sua jornada de clareza, aprendizado e evolução prática.
+            </p>
+
+            <div class="video-wrapper" style="max-width: 800px; margin: 0 auto;">
+                <div class="video-placeholder">Criativo de fechamento, aguardando vídeo</div>
+            </div>
+        </section>
+
+        <!-- Seção de Produtos / Cards -->
+        <section class="container" style="padding: 40px 0;">
+            <div id="produtos-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <!-- Cards injetados via oferta.js -->
+                <div style="background-color: var(--cor-preto-card); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 8px; padding: 30px; text-align: left;">
+                    <h3 style="color: var(--cor-dourado); font-size: 1.5rem; margin-bottom: 15px;">Volume 1</h3>
+                    <p style="color: var(--cor-texto-muted); margin-bottom: 20px;">Carregando produto...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Garantia e Acesso -->
+        <section class="container" style="background-color: var(--cor-preto-card); border-radius: 12px; padding: 40px; margin: 40px auto; border: 1px solid rgba(212, 175, 55, 0.2); text-align: center;">
+            <h3 style="font-size: 1.8rem; margin-bottom: 15px; color: var(--cor-dourado-claro);">Garantia e Forma de Acesso</h3>
+            <p style="color: var(--cor-texto); max-width: 700px; margin: 0 auto 15px auto;" id="texto-garantia">
+                Você conta com garantia de 7 dias de arrependimento (Art. 49 do Código de Defesa do Consumidor). Se o material não atender às suas expectativas, você pode solicitar o reembolso integral dentro desse prazo.
+            </p>
+            <p style="color: var(--cor-texto-muted); font-size: 0.95rem;" id="texto-acesso">
+                Forma de acesso: [A DEFINIR - Envio por e-mail após a confirmação do pagamento]
+            </p>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <p><strong>Direito de arrependimento:</strong> Garantia de 7 dias conforme o Art. 49 do Código de Defesa do Consumidor.</p>
+            <p id="dados-vendedor">Vendedor: [A PREENCHER] | CNPJ: [A PREENCHER] | Contato: [A PREENCHER]</p>
+            <p style="margin-top: 20px; color: #6b7280;">&copy; Prospere. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts de Configuração e Inicialização -->
+    <script src="config/vendedor.js"></script>
+    <script src="config/produtos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof vendedorConfig !== 'undefined') {
+                const dadosEl = document.getElementById('dados-vendedor');
+                if (dadosEl) {
+                    dadosEl.innerHTML = `Vendedor: ${vendedorConfig.nome} | CNPJ: ${vendedorConfig.cnpj} | E-mail: ${vendedorConfig.email} | WhatsApp: ${vendedorConfig.whatsapp}`;
+                }
+            }
+        });
+    </script>
+    <script src="js/oferta.js"></script>
+</body>
+</html>

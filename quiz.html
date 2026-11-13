@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prospere - Quiz de Perfil de Prosperidade</title>
+    <meta name="description" content="Descubra seu Perfil de Prosperidade com nosso quiz interativo.">
+    <!-- Google Fonts: Playfair Display e Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+    <!-- Cabeçalho com Voltar ao início -->
+    <header>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="logo-texto">Prospere</span>
+            <a href="index.html" style="color: var(--cor-dourado); text-decoration: none; font-size: 0.95rem; font-weight: 500;">← Voltar ao início</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Vídeo Explicativo no Topo -->
+        <section class="container" style="text-align: center; padding-top: 40px; padding-bottom: 40px;">
+            <h1 style="font-size: 2.2rem; margin-bottom: 15px; line-height: 1.2;">
+                O Que Está Travando Sua Prosperidade?
+            </h1>
+            <p style="font-size: 1.05rem; color: var(--cor-texto-muted); max-width: 700px; margin: 0 auto 30px auto;">
+                Assista ao vídeo explicativo e, em seguida, responda às 7 perguntas para descobrir seu perfil.
+            </p>
+
+            <!-- Vídeo do YouTube (H3j9-6Z9cTc) em iframe youtube-nocookie.com, formato 16:9, sem autoplay, loading="lazy" -->
+            <div style="max-width: 800px; margin: 0 auto; position: relative; width: 100%; aspect-ratio: 16/9; background-color: var(--cor-preto-card); border-radius: 12px; overflow: hidden; border: 1px solid rgba(212, 175, 55, 0.2);">
+                <iframe 
+                    src="https://www.youtube-nocookie.com/embed/H3j9-6Z9cTc" 
+                    title="Vídeo explicativo - O Código da Prosperidade" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </section>
+
+        <!-- 2. Quiz -->
+        <section id="quiz-secao" class="container" style="background-color: var(--cor-preto-card); border-radius: 12px; padding: 40px; margin-bottom: 60px; border: 1px solid rgba(212, 175, 55, 0.2);">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h2 style="font-size: 2rem; margin-bottom: 10px;">Descubra seu Perfil de Prosperidade</h2>
+                <p id="quiz-contador" style="color: var(--cor-dourado); font-weight: 500;">Carregando quiz...</p>
+            </div>
+            
+            <div id="quiz-container">
+                <!-- Conteúdo injetado via quiz.js -->
+                <p style="text-align: center; color: var(--cor-texto-muted);">Carregando quiz interativo...</p>
+            </div>
+        </section>
+
+        <!-- 3. Resultado (Oculto inicialmente) -->
+        <section id="resultado-secao" class="container" style="display: none; background-color: var(--cor-preto-card); border-radius: 12px; padding: 40px; margin-bottom: 60px; border: 1px solid var(--cor-dourado);">
+            <!-- Conteúdo preenchido via quiz.js -->
+        </section>
+
+        <!-- 4. Sobre quem criou -->
+        <section id="sobre-criador" class="container" style="padding: 60px 0; border-top: 1px solid rgba(212, 175, 55, 0.1);">
+            <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+                <h2 style="font-size: 2rem; margin-bottom: 20px;">Sobre quem criou</h2>
+                <p id="texto-sobre" style="color: var(--cor-texto); font-size: 1rem; line-height: 1.8; margin-bottom: 30px;">
+                    <!-- Carregado via vendedor.js -->
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <p><strong>Direito de arrependimento:</strong> Garantia de 7 dias conforme o Art. 49 do Código de Defesa do Consumidor.</p>
+            <p id="dados-vendedor">Vendedor: [A PREENCHER] | CNPJ: [A PREENCHER] | Contato: [A PREENCHER]</p>
+            <p style="margin-top: 20px; color: #6b7280;">&copy; Prospere. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts de Configuração e Inicialização -->
+    <script src="config/vendedor.js"></script>
+    <script src="config/produtos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof vendedorConfig !== 'undefined') {
+                const dadosEl = document.getElementById('dados-vendedor');
+                if (dadosEl) {
+                    dadosEl.innerHTML = `Vendedor: ${vendedorConfig.nome} | CNPJ: ${vendedorConfig.cnpj} | E-mail: ${vendedorConfig.email} | WhatsApp: ${vendedorConfig.whatsapp}`;
+                }
+                const sobreEl = document.getElementById('texto-sobre');
+                if (sobreEl) {
+                    sobreEl.innerText = vendedorConfig.sobreCriador;
+                }
+            }
+        });
+    </script>
+    <script src="js/quiz.js"></script>
+</body>
+</html>

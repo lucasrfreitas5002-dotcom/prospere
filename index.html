@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roleta do Prospere — Sorteio de Cartas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="estrelas" aria-hidden="true"></div>
+
+  <main class="app">
+
+    <!-- TELA 1: INTRODUÇÃO E LOGIN -->
+    <section id="tela-login" class="tela" aria-labelledby="titulo">
+      <div style="width: 100%; display: flex; justify-content: flex-start; margin-bottom: 10px;">
+        <a href="../index.html" class="link" style="font-size: 0.9rem;">← Início</a>
+      </div>
+      <h1 id="titulo">ROLETA DO PROSPERE</h1>
+      <p class="frase">“Os arcanos revelam caminhos. A sabedoria está em compreender os sinais.”</p>
+      <p class="subtitulo">Conecte-se à sua pergunta, gire a roleta e descubra o que os símbolos do Tarot têm a revelar.</p>
+      <p class="explicacao">Esta experiência usa interpretações simbólicas do Tarot como ferramenta de reflexão e entretenimento. Não é uma previsão do futuro.</p>
+
+      <form id="form-login" class="cartao-form" novalidate>
+        <label for="usuario">Nome de usuário</label>
+        <input id="usuario" name="usuario" type="text" maxlength="30" autocomplete="username" placeholder="Como você quer ser chamado?">
+        <p id="erro-login" class="erro" role="alert" hidden></p>
+        <button type="submit" class="btn">SEGUIR</button>
+      </form>
+    </section>
+
+    <!-- TELA 2: ROLETA -->
+    <section id="tela-roleta" class="tela" aria-label="Roleta de cartas" hidden>
+      <div class="topo">
+        <div>
+          <button type="button" id="btn-voltar" class="link">← Voltar</button>
+          <a href="../index.html" class="link" style="margin-left: 15px;">Início</a>
+        </div>
+        <span id="saudacao"></span>
+      </div>
+
+      <div class="aviso" role="alert">
+        Atenção: as respostas emitidas por este sistema tendem a ser muito realistas. Leia com calma e lembre que o Tarot é uma ferramenta simbólica de reflexão, não uma previsão.
+      </div>
+
+      <p class="instrucao">Pense no que você quer saber. Aperte em <strong>GIRAR</strong> e receba seus 3 giros.</p>
+
+      <ol class="progresso" aria-label="Progresso dos giros">
+        <li></li>
+        <li></li>
+        <li></li>
+      </ol>
+      <p id="contador" class="contador"></p>
+
+      <div class="roda-wrap">
+        <div class="ponteiro" aria-hidden="true"></div>
+        <svg id="roda" class="roda" viewBox="-200 -200 400 400" role="img" aria-label="Roleta com as 78 cartas do Tarot"></svg>
+      </div>
+
+      <button type="button" id="btn-girar" class="btn btn-principal">GIRAR A ROLETA</button>
+
+      <section id="resultado" class="resultado" aria-live="polite" hidden>
+        <p id="cf-posicao" class="posicao"></p>
+        <article id="carta-face" class="carta-face">
+          <div class="carta-moldura" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+            <img id="cf-img" src="" alt="" style="width: 140px; height: 245px; object-fit: cover; border-radius: 6px; border: 1px solid var(--dourado); box-shadow: 0 4px 12px rgba(0,0,0,0.5);" />
+            <div style="text-align: center;">
+              <span id="cf-numero" class="carta-numero"></span>
+              <span id="cf-simbolo" class="carta-simbolo" aria-hidden="true"></span>
+              <h2 id="cf-nome" style="margin-top: 5px;"></h2>
+              <p id="cf-grupo" class="carta-grupo"></p>
+              <ul id="cf-chaves" class="carta-chaves" style="display: flex; justify-content: center; gap: 8px; list-style: none; padding: 0; margin-top: 8px;"></ul>
+            </div>
+          </div>
+        </article>
+        <p id="cf-descricao" class="descricao"></p>
+      </section>
+
+      <button type="button" id="btn-finalizar" class="btn" hidden>FINALIZAR CONSULTA</button>
+
+      <footer style="margin-top: 25px; font-size: 0.8rem; color: var(--texto-suave); text-align: center; line-height: 1.5; border-top: 1px solid rgba(212,175,55,0.2); padding-top: 15px;">
+        Este conteúdo é para reflexão pessoal e entretenimento. Não substitui orientação profissional em finanças, saúde ou decisões importantes.
+      </footer>
+    </section>
+
+    <!-- TELA 3: PARABÉNS -->
+    <section id="tela-fim" class="tela" aria-label="Consulta concluída" hidden>
+      <div style="width: 100%; display: flex; justify-content: flex-start; margin-bottom: 10px;">
+        <a href="../index.html" class="link" style="font-size: 0.9rem;">← Início</a>
+      </div>
+      <svg class="ilustracao" viewBox="0 0 200 200" aria-hidden="true">
+        <defs>
+          <radialGradient id="halo-fim">
+            <stop offset="0%" stop-color="#f3d77a" stop-opacity=".9"/>
+            <stop offset="55%" stop-color="#8b5cf6" stop-opacity=".35"/>
+            <stop offset="100%" stop-color="#07050d" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="100" cy="100" r="98" fill="url(#halo-fim)"/>
+        <circle cx="100" cy="100" r="66" fill="none" stroke="#d4af37" stroke-width="2"/>
+        <circle cx="100" cy="100" r="82" fill="none" stroke="#d4af37" stroke-width="1" stroke-dasharray="3 6"/>
+        <polygon points="100,40 114.7,79.8 157.1,81.5 123.8,107.7 135.3,148.5 100,125 64.7,148.5 76.2,107.7 42.9,81.5 85.3,79.8" fill="#d4af37"/>
+        <circle cx="100" cy="100" r="7" fill="#f4efe6"/>
+        <g fill="#f3d77a">
+          <circle cx="30" cy="40" r="2"/>
+          <circle cx="170" cy="60" r="2.5"/>
+          <circle cx="160" cy="165" r="2"/>
+          <circle cx="36" cy="160" r="2.5"/>
+        </g>
+      </svg>
+      <h2>Parabéns!</h2>
+      <p class="subtitulo">Você concluiu seus 3 giros de hoje.</p>
+      <button type="button" id="btn-ok" class="btn">OK</button>
+    </section>
+
+  </main>
+
+  <script src="data/cartas.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
